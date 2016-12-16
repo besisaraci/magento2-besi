@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!--event name is when site is opening-->
+    <event name="controller_front_send_response_before">
+        <!--name catchip is added random by me, while instance is from observers path-->
+        <observer name="catchIp" instance="Shero\Ip\Observers\RemoteAddress" />
+        <!--end observer-->
+    </event>
+    <!--end event-->
+</config>

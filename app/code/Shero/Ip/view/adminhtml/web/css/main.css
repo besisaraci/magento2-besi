@@ -1,0 +1,5 @@
+.admin__menu #menu-shero-ip-ip > a:before {
+    content: 'SH';
+    font-size: 1.8rem;
+    padding-top: 0.4rem;
+}

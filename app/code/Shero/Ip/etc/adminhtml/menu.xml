@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Shero_Ip::ip" title="Shero Country Ip Block" module="Shero_Ip" sortOrder="40" resource="Shero_Ip::ip" />
+        <add id="Shero_Ip::ip_configuration" title="Configuration" module="Shero_Ip" sortOrder="99" parent="Shero_Ip::ip" action="adminhtml/system_config/edit/section/shero_ip" resource="Shero_Ip::ip_configuration"/>
+    </menu>
+</config>

@@ -1,0 +1,34 @@
+<div class="control" data-bind="scope: 'qty_change'">
+
+    <button data-bind="click: decreaseQty">-</button>
+
+    <input  data-bind="value: qty()"
+            type="number"
+            name="qty"
+            id="qty"
+            maxlength="12"
+            title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty"
+            data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+    />
+
+    <button data-bind="click: increaseQty">+</button>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "qty_change": {
+                        "component": "Besi_Productincrement/js/view/product/view/qty_change",
+                        "defaultQty": <?php echo $block->getProductDefaultQty() * 1 ?>
+                    }
+                 }
+            }
+        }
+    }
+</script>
+<style>
+    input#qty {
+        width: 9%;
+    }
+</style>

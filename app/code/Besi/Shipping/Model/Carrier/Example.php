@@ -1,4 +1,5 @@
 <?php
+
 namespace Besi\Shipping\Model\Carrier;
 
 use Magento\Quote\Model\Quote\Address\RateRequest;

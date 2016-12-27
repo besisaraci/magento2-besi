@@ -2,6 +2,7 @@
 
 namespace Tutorial\SimpleNews\Controller\Adminhtml\News;
 
+use Magento\Framework\Controller\ResultFactory;
 use Tutorial\SimpleNews\Controller\Adminhtml\News;
 
 class Edit extends News
@@ -11,12 +12,12 @@ class Edit extends News
      */
     public function execute()
     {
-        $newsId = $this->getRequest()->getParam('id');
+        $newsId = (int) $this->getRequest()->getParam('id');
         /** @var \Tutorial\SimpleNews\Model\News $model */
-        $model = $this->_newsFactory->create();
+        $model = $this->_objectManager->create('Tutorial\SimpleNews\Model\News');
 
         if ($newsId) {
-            $model->load($newsId);
+            $model = $model->load($newsId);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This news no longer exists.'));
                 $this->_redirect('*/*/');

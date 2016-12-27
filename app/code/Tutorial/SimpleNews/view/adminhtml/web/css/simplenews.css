@@ -1,0 +1,6 @@
+.admin__menu #menu-tutorial-simplenews-main-menu > a:before {
+    content: 'B';
+    font-size: 1.8rem;
+    padding-top: 0.4rem;
+
+}

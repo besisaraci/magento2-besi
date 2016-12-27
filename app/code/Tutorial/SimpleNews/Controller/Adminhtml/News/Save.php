@@ -3,6 +3,7 @@
 namespace Tutorial\SimpleNews\Controller\Adminhtml\News;
 
 use Tutorial\SimpleNews\Controller\Adminhtml\News;
+use Magento\Framework\Controller\ResultFactory;
 
 class Save extends News
 {
@@ -14,7 +15,8 @@ class Save extends News
         $isPost = $this->getRequest()->getPost();
 
         if ($isPost) {
-            $newsModel = $this->_newsFactory->create();
+            $newsModel = $this->_objectManager->create('Tutorial\SimpleNews\Model\News');
+
             $newsId = $this->getRequest()->getParam('id');
 
             if ($newsId) {

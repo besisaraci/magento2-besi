@@ -3,6 +3,7 @@
 namespace Tutorial\SimpleNews\Controller\Adminhtml\News;
 
 use Tutorial\SimpleNews\Controller\Adminhtml\News;
+use Magento\Framework\Controller\ResultFactory;
 
 class Delete extends News
 {
@@ -15,7 +16,7 @@ class Delete extends News
 
         if ($newsId) {
             /** @var $newsModel \Mageworld\SimpleNews\Model\News */
-            $newsModel = $this->_newsFactory->create();
+            $newsModel = $this->_objectManager->create('Tutorial\SimpleNews\Model\News');
             $newsModel->load($newsId);
 
             // Check this news exists or not

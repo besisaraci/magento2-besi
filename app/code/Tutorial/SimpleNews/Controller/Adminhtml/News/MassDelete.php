@@ -3,6 +3,7 @@
 namespace Tutorial\SimpleNews\Controller\Adminhtml\News;
 
 use Tutorial\SimpleNews\Controller\Adminhtml\News;
+use Magento\Framework\Controller\ResultFactory;
 
 class MassDelete extends News
 {
@@ -17,7 +18,7 @@ class MassDelete extends News
         foreach ($newsIds as $newsId) {
             try {
                 /** @var $newsModel \Mageworld\SimpleNews\Model\News */
-                $newsModel = $this->_newsFactory->create();
+                $newsModel = $this->_objectManager->create('Tutorial\SimpleNews\Model\News');
                 $newsModel->load($newsId)->delete();
             } catch (\Exception $e) {
                 $this->messageManager->addError($e->getMessage());

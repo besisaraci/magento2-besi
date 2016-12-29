@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="besi" translate="label" sortOrder="10">
+            <label>Besi Extensions</label>
+        </tab>
+        <section id="simplenews" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Add Customer Attribute</label>
+            <tab>besi</tab>
+            <resource>Tutorial_SimpleNews::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Module Enable</label>
+                    <source_model>Tutorial\SimpleNews\Model\System\Config\Status</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

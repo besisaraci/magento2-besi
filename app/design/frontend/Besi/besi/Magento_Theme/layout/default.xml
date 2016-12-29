@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="contact-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Visit our Blog</argument>
+                    <argument name="path" xsi:type="string" translate="true">wp</argument>
+                </arguments>
+            </block>
+            <!--remove wishlist link in the header menu-->
+            <referenceBlock name="wish-list-link" remove="true" />
+        </referenceContainer>
+    </body>
+</page>

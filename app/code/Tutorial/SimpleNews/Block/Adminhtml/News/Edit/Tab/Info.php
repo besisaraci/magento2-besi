@@ -9,37 +9,37 @@ use Magento\Framework\Registry;
 use Magento\Framework\Data\FormFactory;
 use Magento\Cms\Model\Wysiwyg\Config;
 use Tutorial\SimpleNews\Model\System\Config\Status;
+use Tutorial\SimpleNews\Model\System\Config\Fieldtype;
+use Tutorial\SimpleNews\Model\System\Config\Forms;
+use Tutorial\SimpleNews\Model\System\Config\Yesno;
 
 class Info extends Generic implements TabInterface
 {
-    /**
-     * @var \Magento\Cms\Model\Wysiwyg\Config
-     */
+
     protected $_wysiwygConfig;
 
-    /**
-     * @var \Tutorial\SimpleNews\Model\Config\Status
-     */
     protected $_newsStatus;
+    protected $_yesNo;
+    protected $_fieldType;
+    protected $_inForms;
 
-    /**
-     * @param Context $context
-     * @param Registry $registry
-     * @param FormFactory $formFactory
-     * @param Config $wysiwygConfig
-     * @param Status $newsStatus
-     * @param array $data
-     */
+   
     public function __construct(
         Context $context,
         Registry $registry,
         FormFactory $formFactory,
         Config $wysiwygConfig,
         Status $newsStatus,
+        Forms  $inForms,
+        Yesno $yesNo,
+        FieldType $fieldType,
         array $data = []
     ) {
         $this->_wysiwygConfig = $wysiwygConfig;
         $this->_newsStatus = $newsStatus;
+        $this->_yesNo = $yesNo;
+        $this->_fieldType = $fieldType;
+        $this->_inForms = $inForms;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -52,6 +52,7 @@ class Info extends Generic implements TabInterface
     {
         /** @var $model \Tutorial\SimpleNews\Model\News */
         $model = $this->_coreRegistry->registry('simplenews_news');
+        $show_in_fields = $model->getDisplayIn();
 
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();
@@ -71,33 +72,55 @@ class Info extends Generic implements TabInterface
             );
         }
         $fieldset->addField(
-            'title',
+            'attribute_label',
             'text',
             [
-                'name'        => 'title',
-                'label'    => __('Title'),
+                'name'        => 'attribute_label',
+                'label'    => __('Default Label'),
                 'required'     => true
             ]
         );
         $fieldset->addField(
-            'status',
-            'select',
+            'attribute_code',
+            'text',
             [
-                'name'      => 'status',
-                'label'     => __('Status'),
-                'options'   => $this->_newsStatus->toOptionArray()
+                'name'        => 'attribute_code',
+                'label'    => __('Attribute Code'),
+                'required'     => true
             ]
         );
         $fieldset->addField(
-            'summary',
-            'textarea',
+            'attribute_type',
+            'select',
             [
-                'name'      => 'summary',
-                'label'     => __('Summary'),
-                'required'  => true,
-                'style'     => 'height: 15em; width: 30em;'
+                'name'      => 'attribute_type',
+                'label'     => __('Attribute Type'),
+                'options'   => $this->_fieldType->toOptionArray(),
+                'required'     => true
             ]
         );
+        $fieldset->addField(
+            'is_required',
+            'select',
+            [
+                'name'      => 'is_required',
+                'label'     => __('Value Required'),
+                'options'   => $this->_yesNo->toOptionArray(),
+                'required'     => true
+            ]
+        );
+        $fieldset->addField(
+            'display_in',
+            'multiselect',
+            [
+                'name'      => 'display_in',
+                'label'     => __('Display Fields in Forms'),
+                'values'   => $this->_inForms->toOptionArray(),
+                'value'    => $show_in_fields,
+                'required'     => true
+            ]
+        );
+
         $wysiwygConfig = $this->_wysiwygConfig->getConfig();
         $fieldset->addField(
             'description',
@@ -107,6 +130,16 @@ class Info extends Generic implements TabInterface
                 'label'    => __('Description'),
                 'required'     => true,
                 'config'    => $wysiwygConfig
+            ]
+        );
+        $fieldset->addField(
+            'status',
+            'select',
+            [
+                'name'      => 'status',
+                'label'     => __('Attribute Status'),
+                'options'   => $this->_newsStatus->toOptionArray(),
+                'required'     => true
             ]
         );
 
@@ -124,7 +157,7 @@ class Info extends Generic implements TabInterface
      */
     public function getTabLabel()
     {
-        return __('News Info');
+        return __('Attribute');
     }
 
     /**
@@ -134,7 +167,7 @@ class Info extends Generic implements TabInterface
      */
     public function getTabTitle()
     {
-        return __('News Info');
+        return __('Attribute');
     }
 
     /**

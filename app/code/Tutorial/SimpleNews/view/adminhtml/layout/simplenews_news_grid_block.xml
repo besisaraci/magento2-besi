@@ -50,19 +50,52 @@ Framework/View/Layout/etc/page_configuration.xsd">
                     </block>
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="title">
                         <arguments>
-                            <argument name="header" xsi:type="string" translate="true">Title</argument>
-                            <argument name="index" xsi:type="string">title</argument>
+                            <argument name="header" xsi:type="string" translate="true">Attribute Code</argument>
+                            <argument name="index" xsi:type="string">attribute_code</argument>
                         </arguments>
                     </block>
-                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="summary">
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="label">
                         <arguments>
-                            <argument name="header" xsi:type="string" translate="true">Summary</argument>
-                            <argument name="index" xsi:type="string">summary</argument>
+                            <argument name="header" xsi:type="string" translate="true">Attribute Label</argument>
+                            <argument name="index" xsi:type="string">attribute_label</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="type">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Attribute Type</argument>
+                            <argument name="index" xsi:type="string">attribute_type</argument>
+                            <argument name="type" xsi:type="string">options</argument>
+                            <argument name="options" xsi:type="options"
+                                      model="Tutorial\SimpleNews\Model\System\Config\Fieldtype"/>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="required">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Values Required</argument>
+                            <argument name="index" xsi:type="string">is_required</argument>
+                            <argument name="type" xsi:type="string">options</argument>
+                            <argument name="options" xsi:type="options"
+                                      model="Tutorial\SimpleNews\Model\System\Config\Yesno"/>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="description">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Attribute Description</argument>
+                            <argument name="index" xsi:type="string">description</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="informs">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Display in Forms</argument>
+                            <argument name="index" xsi:type="string">display_in</argument>
+                            <argument name="type" xsi:type="string">text</argument>
+                            <argument name="options" xsi:type="options"
+                                      model="Tutorial\SimpleNews\Model\System\Config\Forms"/>
                         </arguments>
                     </block>
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="status">
                         <arguments>
-                            <argument name="header" xsi:type="string" translate="true">Status</argument>
+                            <argument name="header" xsi:type="string" translate="true">Attribute Status</argument>
                             <argument name="index" xsi:type="string">status</argument>
                             <argument name="type" xsi:type="string">options</argument>
                             <argument name="options" xsi:type="options"

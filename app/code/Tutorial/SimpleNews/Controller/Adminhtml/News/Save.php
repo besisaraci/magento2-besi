@@ -13,7 +13,6 @@ class Save extends News
     public function execute()
     {
         $isPost = $this->getRequest()->getPost();
-
         if ($isPost) {
             $newsModel = $this->_objectManager->create('Tutorial\SimpleNews\Model\News');
 
@@ -22,7 +21,9 @@ class Save extends News
             if ($newsId) {
                 $newsModel->load($newsId);
             }
+
             $formData = $this->getRequest()->getParam('news');
+            $formData['display_in'] = implode(',',$formData['display_in']);
             $newsModel->setData($formData);
 
             try {

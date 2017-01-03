@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="Besi_Customerattribute::besi_content" title="Add Customer Attribute" module="Besi_Customerattribute" sortOrder="50" parent="Besi_Customerattribute::besi_content" resource="Besi_Customerattribute::besi_content"/>
-        <add id="Besi_Customerattribute::besi_form" title="Customer Attribute" module="Besi_Customerattribute" sortOrder="0" parent="Besi_Customerattribute::besi_content" action="besi/customer/config" resource="Besi_Customerattribute::besi_content"/>
-    </menu>
-</config>

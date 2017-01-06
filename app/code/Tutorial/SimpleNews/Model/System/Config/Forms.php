@@ -17,9 +17,9 @@ class Forms implements ArrayInterface
 
 
         $options = [
-            ['value' => 'Customer Account', 'label' => 'Customer Account'],
-            ['value' => 'Admin Customer Form', 'label' => 'Admin Customer Form'],
-            ['value' => 'Customer Registration', 'label' => 'Customer Registration'],
+            ['value' => 'customer_account_edit', 'label' => 'Customer Account'],
+            ['value' => 'adminhtml_customer', 'label' => 'Admin Customer Form'],
+            ['value' => 'customer_account_create', 'label' => 'Customer Registration'],
 
         ];
         return $options;
